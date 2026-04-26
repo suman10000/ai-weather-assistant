@@ -16,7 +16,6 @@
 - [🔐 Security & Configuration](#-security--configuration)
 - [▶ How to Run Locally](#-how-to-run-locally)
 - [📚 Technical Demonstrations](#-technical-demonstrations)
-- [👨‍💻 Author](#-author)
 
 ---
 
@@ -69,7 +68,9 @@ FrontendStreamlit (Web UI Framework)OrchestrationPython 3.x, RequestsAI BrainGoo
 ├── .gitignore             # Git exclusion rules
 │
 └── README.md              # Project documentation
+
 ⚙ Data Pipeline Flow🔄 Ingestion & TransformationExtraction: Retrieves semi-structured JSON data from RESTful endpoints (Open-Meteo).Cleaning: Extracts relevant slices (Current Conditions vs Daily Forecast) and normalizes timestamps for readability.Translation: Converts system-level integers (WMO codes) into descriptive strings (e.g., 95 → Thunderstorm).🧠 Reasoning Layer (LLM)Prompt Engineering: Uses structured delimiters to enforce a concise, 2-line response format per category.Actionable Logic: The model correlates temperature, wind speed, and precipitation probability to generate specific, data-backed advice.📈 Intelligence CapabilitiesThe "Lifestyle Engine" provides targeted advice across four critical domains:👕 Clothing: Material and layering suggestions based on temperature and wind chill.⚠️ Safety: Proactive alerts regarding road conditions, visibility, or wind hazards.🍲 Food/Drink: Contextual dietary suggestions (e.g., warming foods for cold snaps).🚶 Activity: Decision-support for travel vs. indoor activities based on rain probability.🔐 Security & ConfigurationImplemented using professional environment management:Credential Masking: API keys are managed via st.secrets (Production) and os.getenv (Development).Stateless Persistence: Secure handling of history data within the client-side session to maintain privacy.
+
 ▶ How to Run Locally1️⃣ Clone and InstallBashgit clone [https://github.com/yourusername/ai-weather-assistant.git](https://github.com/yourusername/ai-weather-assistant.git)
 cd ai-weather-assistant
 pip install -r requirements.txt
