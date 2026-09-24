@@ -1,8 +1,7 @@
 import streamlit as st
 import requests
 from google import genai
-from google.api_core import exceptions
-
+from google.genai import errors
 
 st.set_page_config(page_title="AI Weather Assistant", page_icon="🌤️",layout="wide")
 
@@ -69,8 +68,11 @@ def get_ai_response(prompt):
     try:
         response = client.models.generate_content(model=MODEL_ID, contents=prompt)
         return response.text
-    except exceptions.ResourceExhausted:
-        return "⚠️ Quota reached. Please wait 60 seconds."
+    except errors.APIError as e:
+        # Catches quota exhaustion (HTTP 429) and related API faults
+        if getattr(e, "code", None) == 429:
+            return "⚠️ Quota reached. Please wait 60 seconds."
+        return f"API Error: {e.message}"
     except Exception as e:
         return f"AI Error: {e}"
 
